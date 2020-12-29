@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/landing_fragment">
+
+    <fragment
+        android:name="com.rainbowfarkle.ui.LandingFragment"
+        android:id="@+id/landing_fragment">
+        <action
+            android:id="@+id/landing_fragment_to_game_setup_fragment"
+            app:destination="@id/game_setup_fragment"/>
+    </fragment>
+
+    <fragment
+        android:name="com.rainbowfarkle.ui.GameSetupFragment"
+        android:id="@+id/game_setup_fragment">
+        <action
+            android:id="@+id/reload_game_setup_fragment"
+            app:destination="@id/game_setup_fragment"/>
+        <argument
+            android:name="gameSetupEnum"
+            app:argType="com.rainbowfarkle.GameSetupEnum" />
+                <action
+            android:id="@+id/game_setup_fragment_to_names_fragment"
+            app:destination="@id/names_fragment"/>
+    </fragment>
+
+    <fragment
+        android:name="com.rainbowfarkle.ui.NamesFragment"
+        android:id="@+id/names_fragment"/>
+
+</navigation>
