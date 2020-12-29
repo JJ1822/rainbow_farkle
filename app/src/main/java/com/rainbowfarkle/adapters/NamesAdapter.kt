@@ -3,6 +3,7 @@ package com.rainbowfarkle.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import com.rainbowfarkle.R
 import com.rainbowfarkle.datamodels.NameDataModel
@@ -25,7 +26,17 @@ class NamesAdapter(
 
     inner class NameViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(dataModel: NameDataModel) {
-            itemView.name.hint = dataModel.hint
+            itemView.name.apply {
+                hint = dataModel.hint
+                doOnTextChanged { text, _, _, _ ->
+                    val tempText = text ?: ""
+                    if (tempText.isNotEmpty()) {
+                        dataModel.name = tempText.toString()
+                    } else {
+                        dataModel.name = dataModel.hint
+                    }
+                }
+            }
         }
     }
 }

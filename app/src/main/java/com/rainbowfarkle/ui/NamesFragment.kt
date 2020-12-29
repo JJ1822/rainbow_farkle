@@ -19,6 +19,15 @@ class NamesFragment : Fragment() {
 
     private val gameBoardViewModel: GameBoardViewModel by activityViewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        gameBoardViewModel.namesList = List(
+            gameBoardViewModel.getNumberOfPlayers()
+        ) {
+            NameDataModel(resources.getString(R.string.player_number, it + 1))
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,12 +40,12 @@ class NamesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         names_recycler_view.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            adapter = NamesAdapter(
-                List(
-                    gameBoardViewModel.gameSetupMap[GameSetupEnum.NUMBER_OF_PLAYERS] ?: 1
-                ) {
-                    NameDataModel(resources.getString(R.string.player_number, it + 1))
-                })
+            adapter = NamesAdapter(gameBoardViewModel.namesList)
         }
+        save_button.setOnClickListener { navigate() }
+    }
+
+    private fun navigate() {
+        gameBoardViewModel.namesList
     }
 }

@@ -35,8 +35,8 @@ class GameSetupViewModel(
 
     fun onSaveClick() = View.OnClickListener {
        val action = when (dataModel.gameSetupEnum) {
-            GameSetupEnum.NUMBER_OF_PLAYERS -> GameSetupFragmentDirections.reloadGameSetupFragment(GameSetupEnum.NUMBER_Of_POINTS)
-            GameSetupEnum.NUMBER_Of_POINTS -> GameSetupFragmentDirections.gameSetupFragmentToNamesFragment()
+            GameSetupEnum.NUMBER_OF_PLAYERS -> GameSetupFragmentDirections.reloadGameSetupFragment(GameSetupEnum.NUMBER_OF_POINTS)
+            GameSetupEnum.NUMBER_OF_POINTS -> GameSetupFragmentDirections.gameSetupFragmentToNamesFragment()
         }
         onSaveListener(action, dataModel)
     }

@@ -1,7 +1,6 @@
 package com.rainbowfarkle.datamodels
 
 import com.rainbowfarkle.GameSetupEnum
-import com.rainbowfarkle.R
 
 data class GameSetupDataModel(
     val title: Int,
@@ -12,23 +11,13 @@ data class GameSetupDataModel(
     val gameSetupEnum: GameSetupEnum
 ) {
     companion object {
-        fun from(enum: GameSetupEnum, number: Int?) = when (enum) {
-            GameSetupEnum.NUMBER_Of_POINTS -> GameSetupDataModel(
-                R.string.number_of_points,
-                number ?: 5000,
-                1000,
-                3000,
-                15000,
-                enum
-            )
-            GameSetupEnum.NUMBER_OF_PLAYERS -> GameSetupDataModel(
-                R.string.number_of_players,
-                number ?: 2,
-                1,
-                1,
-                10,
-                enum
-            )
-        }
+        fun from(enum: GameSetupEnum, number: Int?) = GameSetupDataModel(
+            enum.title,
+            number ?: enum.default,
+            enum.step,
+            enum.min,
+            enum.max,
+            enum
+        )
     }
 }
