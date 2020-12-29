@@ -12,10 +12,10 @@ data class GameSetupDataModel(
     val gameSetupEnum: GameSetupEnum
 ) {
     companion object {
-        fun from(enum: GameSetupEnum) = when (enum) {
+        fun from(enum: GameSetupEnum, number: Int?) = when (enum) {
             GameSetupEnum.NUMBER_Of_POINTS -> GameSetupDataModel(
                 R.string.number_of_points,
-                5000,
+                number ?: 5000,
                 1000,
                 3000,
                 15000,
@@ -23,7 +23,7 @@ data class GameSetupDataModel(
             )
             GameSetupEnum.NUMBER_OF_PLAYERS -> GameSetupDataModel(
                 R.string.number_of_players,
-                2,
+                number ?: 2,
                 1,
                 1,
                 10,

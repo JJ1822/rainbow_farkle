@@ -11,7 +11,7 @@ import com.rainbowfarkle.ui.GameSetupFragmentDirections
 
 class GameSetupViewModel(
     private val dataModel: GameSetupDataModel,
-    private val onSaveListener: (action: NavDirections) -> Unit
+    private val onSaveListener: (action: NavDirections, dataModel: GameSetupDataModel) -> Unit
 ) : BaseObservable() {
 
     @Bindable
@@ -38,6 +38,6 @@ class GameSetupViewModel(
             GameSetupEnum.NUMBER_OF_PLAYERS -> GameSetupFragmentDirections.reloadGameSetupFragment(GameSetupEnum.NUMBER_Of_POINTS)
             GameSetupEnum.NUMBER_Of_POINTS -> GameSetupFragmentDirections.gameSetupFragmentToNamesFragment()
         }
-        onSaveListener(action)
+        onSaveListener(action, dataModel)
     }
 }
