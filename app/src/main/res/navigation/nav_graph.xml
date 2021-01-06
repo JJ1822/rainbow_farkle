@@ -21,13 +21,21 @@
         <argument
             android:name="gameSetupEnum"
             app:argType="com.rainbowfarkle.GameSetupEnum" />
-                <action
+        <action
             android:id="@+id/game_setup_fragment_to_names_fragment"
             app:destination="@id/names_fragment"/>
     </fragment>
 
     <fragment
         android:name="com.rainbowfarkle.ui.NamesFragment"
-        android:id="@+id/names_fragment"/>
+        android:id="@+id/names_fragment" >
+        <action
+            android:id="@+id/names_fragment_to_game_board"
+            app:destination="@id/game_board_fragment"/>
+    </fragment>
+
+    <fragment
+        android:name="com.rainbowfarkle.ui.GameBoardFragment"
+        android:id="@+id/game_board_fragment" />
 
 </navigation>
